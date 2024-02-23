@@ -1,18 +1,23 @@
-import { Connection, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
+import { Connection, LAMPORTS_PER_SOL, PublicKey, clusterApiUrl } from "@solana/web3.js";
 
-const publicKey = new PublicKey("BMZCLCod4aKohTSHsNw4hdEZ6vjyJbzMRsyY7nHRxiDe");
+try {
+    const publicKey = new PublicKey("BMZCLCod4aKohTSHsNw4hdEZ6vjyJbzMRsyY7nHRxiDe");
+    if(PublicKey.isOnCurve(publicKey)) {
+        const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
 
-if(PublicKey.isOnCurve(publicKey)) {
-    const connection = new Connection('https://api.devnet.solana.com', 'confirmed');
+        const balanceInLamports = await connection.getBalance(publicKey);
 
-    const balanceInLamports = await connection.getBalance(publicKey);
+        const balanceInSol = balanceInLamports / LAMPORTS_PER_SOL;
 
-    const balanceInSol = balanceInLamports / LAMPORTS_PER_SOL;
+        console.log(`The balance for the wallet at address ${publicKey} is ${balanceInSol}`);
 
-    console.log(`The balance for the wallet at address ${publicKey} is ${balanceInSol}`);
+    } else {
+        console.log('The public address is invalid');
+    }
 
-} else {
-    console.log('The public address is invalid');
+} catch (error) {
+    console.log("Invalid");
 }
+
 
 
