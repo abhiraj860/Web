@@ -10,24 +10,28 @@ const publicKey1 = keyPair1.publicKey;
 const keyPair2 = getKeypairFromEnvironment("SECRET_KEY_2");
 const publicKey2 = keyPair2.publicKey;
 
-try {
-    const publicKey = publicKey1;
-    if(PublicKey.isOnCurve(publicKey)) {
-        const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+async function getBalance(publicKey:PublicKey): Promise<string> {
+    try {
+        if(PublicKey.isOnCurve(publicKey)) {
+            const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
 
-        const balanceInLamports = await connection.getBalance(publicKey);
+            const balanceInLamports = await connection.getBalance(publicKey);
 
-        const balanceInSol = balanceInLamports / LAMPORTS_PER_SOL;
+            const balanceInSol = balanceInLamports / LAMPORTS_PER_SOL;
 
-        console.log(`The balance for the wallet at address ${publicKey} is ${balanceInSol}`);
+            return `The balance for the wallet at address ${publicKey} is ${balanceInSol}`;
 
-    } else {
-        console.log('The public address is invalid');
+        } else {
+            return 'The public address is invalid';
+        }
+
+    } catch (error) {
+        return "Invalid";
     }
-
-} catch (error) {
-    console.log("Invalid");
 }
 
+const a1 = await getBalance(publicKey1);
+const a2 = await getBalance(publicKey2);
 
-
+console.log(a1);
+console.log(a2);
