@@ -32,3 +32,4 @@ const signature = await web3.sendAndConfirmTransaction(
 
 console.log(`Transaction is completed! Signature is ${signature}`);
 // console.log(`You can view your transaction on the Solana Explorer at:\nhttps://explorer.solana.com/tx/${signature}?cluster=devnet`)
+console.log('Ping contract program completed');
