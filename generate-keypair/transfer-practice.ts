@@ -22,3 +22,5 @@ transaction.add(instruction);
 const signature = await web3.sendAndConfirmTransaction(connection, transaction, [senderId]); 
 
 console.log(`The signature for the transfer to PING program is ${signature}`);
+
+console.log('Transaction is completed');
