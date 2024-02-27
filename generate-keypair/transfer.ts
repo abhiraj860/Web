@@ -40,5 +40,6 @@ console.log(`Finished! send ${LAMPORTS_TO_SEND} to the address ${toPubkey}`);
 
 console.log(`Transaction signature is ${signature}`);
 
+console.log('Transaction is completed');
 
 
