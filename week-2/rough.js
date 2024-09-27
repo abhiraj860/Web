@@ -1,7 +1,11 @@
-// let str = "h";
-// const binaryRep = new TextEncoder().encode(str);
+function arrayToHex(byteArray) {
+    let hexString = '';
+    for(let i = 0; i < byteArray.length; i++) {
+        hexString += byteArray[i].toString(16).padStart(2, '0');
+    }
+    return hexString;
+}
 
-// console.log(binaryRep);
-
-const arr = new Uint8Array([1231312312]);
-console.log(arr);
+const byteArray = new Uint8Array([72, 101, 108, 111]);
+const hexString = arrayToHex(byteArray);
+console.log(hexString);
