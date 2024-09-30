@@ -7,6 +7,7 @@ func main() {
 	conferenceName := "Go Conference";
 	const conferenceTickets int = 50;
 	var remainingTickets uint = 50;
+	bookings := []string{};
 
 	fmt.Printf("Welcome to %v booking application\n", conferenceName);
 	fmt.Printf("We have total of %v tickets and %v are still available.\n", conferenceTickets, remainingTickets);
@@ -30,9 +31,11 @@ func main() {
 	fmt.Scan(&userTickets);
 
 	remainingTickets -= userTickets;
-
+	bookings = append(bookings, firstName + " " + lastName);
+	
 	fmt.Printf("Thank you %v %v of the user for booking %v tickets.\n", firstName, lastName, userTickets)
 	fmt.Printf("You will recieve a confirmation email at %v.\n", email);
 	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName);
 
+	fmt.Printf("These are all the bookings: %v\n", bookings);
 }
