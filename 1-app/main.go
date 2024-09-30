@@ -4,21 +4,33 @@ import "fmt"
 
 func main() {
 
-	var conferenceName = "Go Conference";
-	const conferenceTickets = 50;
-	var remainingTickets = 50;
+	conferenceName := "Go Conference";
+	const conferenceTickets int = 50;
+	var remainingTickets uint = 50;
 
 	fmt.Printf("Welcome to %v booking application\n", conferenceName);
 	fmt.Printf("We have total of %v tickets and %v are still available.\n", conferenceTickets, remainingTickets);
 	fmt.Println("Get your tickets here to attend");
 
-	var userName string;
+	var firstName string;
+	var lastName string; 
+	var email string;
 	var userTickets int;
 	// ask user for name
+	fmt.Println("Enter your first name: ");
+	fmt.Scan(&firstName);
 
-	userName = "Tom"
-	userTickets = 2;
-	fmt.Printf("User %v booked %v tickets.\n", userName, userTickets)
+	fmt.Println("Enter your last name: ");
+	fmt.Scan(&lastName);
+
+	fmt.Println("Enter your email: ");
+	fmt.Scan(&email);
+
+	fmt.Println("Enter number of tickets: ");
+	fmt.Scan(&userTickets);
+
+	fmt.Printf("Thank you %v %v of the user for booking %v tickets.\n", firstName, lastName, userTickets)
+	fmt.Printf("You will recieve a confirmation email at %v.\n", email);
 
 
 }
