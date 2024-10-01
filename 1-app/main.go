@@ -3,12 +3,16 @@ package main
 import (
 	"fmt"
 	"strings"
+	"strconv"
 )
 
 const conferenceTickets int = 50;
 var conferenceName = "Go Conference";
 var remainingTickets uint = 50;
-var bookings = []string{};
+var bookings = make([]map[string]string, 0);
+
+
+
 
 func main() {
 
@@ -27,7 +31,6 @@ func main() {
 			fmt.Printf("The first names of booking are: %v\n", firstNames);
 
 			if remainingTickets == 0 {
-				// end program
 				fmt.Println("Our conference is booked out. Come back next year.");
 				break;
 			}
@@ -56,8 +59,7 @@ func greetUsers() {
 func getFirstNames() []string {
 	firstNames := []string{};
 	for _, booking := range bookings {
-		var names = strings.Fields(booking);
-		firstNames = append(firstNames, names[0]);
+		firstNames = append(firstNames, booking["firstName"]);
 	}
 	return firstNames;
 }
@@ -95,8 +97,19 @@ func getUserInput() (string, string, string, uint) {
 func bookTicket(userTickets uint, firstName string, lastName string, email string) {
 
 	remainingTickets -= userTickets;
-	bookings = append(bookings, firstName + " " + lastName);
-	
+
+	// var mySlice []string
+	// var myMap map[string]string
+
+	// create a map for a user
+	var userData = make(map[string]string);
+	userData["firstName"] = firstName;
+	userData["lastName"] = lastName;
+	userData["email"] = email;
+	userData["numberOfTickets"] = strconv.FormatUint(uint64(userTickets), 10);
+
+	bookings = append(bookings, userData);
+	fmt.Printf("List of booking is %v\n", bookings);	
 	fmt.Printf("Thank you %v %v of the user for booking %v tickets.\n", firstName, lastName, userTickets)
 	fmt.Printf("You will recieve a confirmation email at %v.\n", email);
 	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName);
