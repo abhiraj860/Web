@@ -108,9 +108,6 @@ func bookTicket(userTickets uint, firstName string, lastName string, email strin
 
 	remainingTickets -= userTickets;
 
-	// var mySlice []string
-	// var myMap map[string]string
-
 	// create a map for a user
 	var userData = UserData {
 		firstName: firstName,
