@@ -2,26 +2,24 @@ package main
 
 import "fmt"
 
+func zeroval(ival int) {
+	ival = 0
+}
+
+func zeroptr(iptr *int) {
+	*iptr = 0
+}
+
 func main() {
+
+	i := 1
+	fmt.Println("initial:", i)
+
+	zeroval(i)
+	fmt.Println("zeroval:", i)
 	
-	nums := []int{1, 2, 3, 4}
-	sum := 0
-	for _,num := range nums {
-		sum += num
-	}
-	fmt.Println("sum:", sum)
-	for i, num := range nums {
-		if num == 3 {
-			fmt.Println("index:", i)
-		}
-	}
+	zeroptr(&i)
+	fmt.Println("zeroptr:", i)
 
-	kvs := map[string]string{"a": "apple", "b": "banana"}
-	for k, v := range kvs {
-		fmt.Printf("%v -> %v\n", k, v)
-	}
-
-	for k := range kvs {
-		fmt.Printf("Keys: %v\n", k);
-	}
+	fmt.Println("pointer:", &i)
 }
