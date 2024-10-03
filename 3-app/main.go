@@ -1,16 +1,17 @@
 package main
 
-type User struct {
-	ID int
-	Name string
+import "fmt"
+
+func createPointer() *int {
+	x := 42
+	return &x
 }
 
-func updateName(u *User, name string) {
-	u.Name = name
+func example() {
+	p := createPointer()
+	fmt.Println(*p)
 }
 
 func main() {
-	user := User{ID: 42, Name: "Gopher"}
-	updateName(&user,"Tiago")
-	println(user.Name)
+	example()
 }
