@@ -1,15 +1,16 @@
 package main
 
-import "fmt"
+type User struct {
+	ID int
+	Name string
+}
+
+func updateName(u *User, name string) {
+	u.Name = name
+}
 
 func main() {
-	userId := 42
-	fmt.Println(userId)
-	fmt.Println(&userId)
-	anotherUserId := &userId
-	fmt.Println(anotherUserId)
-
-	userId = 100
-	fmt.Println(anotherUserId)
-	fmt.Println(*anotherUserId)
+	user := User{ID: 42, Name: "Gopher"}
+	updateName(&user,"Tiago")
+	println(user.Name)
 }
