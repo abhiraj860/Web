@@ -4,16 +4,17 @@ import (
 	"fmt"
 )
 
-func do(b []int) int {
-	b[0] = 0
-	fmt.Printf("%p\n", b)
-	return b[1]
+func do(m1 * map[int]int) {
+	(*m1)[3] = 0
+	*m1 = make(map[int]int)
+	(*m1)[4] = 4
+	fmt.Println("m1", *m1)
 }
 
 func main() {
-	a := []int{1, 2, 3}
-	fmt.Printf("%p\n", a)
-	v := do(a)
-
-	fmt.Println(a, v)
+	m := map[int]int{4:1, 7:2, 8:3}
+	
+	fmt.Println("m", m)
+	do(&m)
+	fmt.Println("m", m)
 }
