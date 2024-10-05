@@ -7,15 +7,15 @@ import (
 
 
 func main() {
-	s := make([]func(), 4)
+	a := [3]int{1, 2, 3}
+	b := a[0:1]
+	c := b[0:2]
 
-	for i := 0; i < 4; i++ {
-		s[i] = func () {
-			fmt.Printf("%d @ %p\n", i, &i)	
-		}
-	}
+	fmt.Printf("a[%p] = %v \n", &a, a)
+	fmt.Printf("b[%p] = %[1]v \n", b)
+	fmt.Printf("c[%p] = %[1]v \n", 	c)
 
-	for i := 0; i < 4; i++ {
-		s[i]()
-	}
+	c = append(c, 5)
+	fmt.Printf("a[%p] = %v \n", &a, a)
+	fmt.Printf("c[%p] = %[1]v \n", 	c)
 }
