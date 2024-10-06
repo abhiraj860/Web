@@ -16,6 +16,7 @@ var raw = `
 	<p>My first paragraph.</p>
 	<p>HTML <a href="https://www.w3schools.com/html/html_images.asp">images</a> are defined with the img tag:</p>
 	<img src="xxx.jpg" width="104" height="142">
+	<img src="xxx.jpg" width="104" height="142">
 </body>
 </html>`
 
